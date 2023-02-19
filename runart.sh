@@ -33,9 +33,9 @@
 # advanced-makepkg-configuration
 # advanced-package-installation
 # advanced-dotfiles-installation
+# advanced-touchpad-tap-click-setting
 # advanced-yay-installation
 # advanced-custom-neovim-installtion
-#
 
 # section:functions
 # basic helper funcitons
@@ -344,6 +344,15 @@ Include = /etc/pacman.d/mirrorlist-arch" >>/etc/pacman.conf
 		sudo -u "$username" rm "/home/$username/LICENSE" "/home/$username/README.md"
 	}
 	rm -rf "$temp_dir"
+	
+	# section:advanced-touchpad-tap-click-setting
+	[ ! -f /etc/X11/xorg.conf.d/40-libinput.conf ] && printf 'Section "InputClass"
+		Identifier "libinput touchpad catchall"
+		MatchIsTouchpad "on"
+		MatchDevicePath "/dev/input/event*"
+		Driver "libinput"
+		Option "Tapping" "on"
+	EndSection' >/etc/X11/xorg.conf.d/40-libinput.conf
 
 	#srcdir="/home/$username/.local/src"
 
