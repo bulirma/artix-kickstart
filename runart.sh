@@ -322,24 +322,19 @@ Include = /etc/pacman.d/mirrorlist-arch" >>/etc/pacman.conf
 		libxinerama libxft \
 		udisks2 ntfs-3g \
 		libnotify dunst \
-		sxiv mpv xwallpaper \
+		sxiv mpv xwallpaper xclip scrot \
 		zsh-syntax-highlighting \
-		slock \
-		man-db \
-		tree htop \
-		xclip scrot \
+		man-db tree entr \
+		htop connman-gtk \
 		acpi \
 		pulseaudio pavucontrol pamixer \
 		vim \
 		openssh rsync \
-		lua python \
-		shellcheck \
-		cmake \
+		lua python shellcheck cmake \
 		zathura zathura-pdf-mupdf \
-		entr \
 		unzip \
 		firefox \
-		herbstluftwm rofi polybar \
+		herbstluftwm rofi polybar slock \
 		xorg-xbacklight
 	
 	# section:advanced-dotfiles-installation
