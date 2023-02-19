@@ -198,8 +198,8 @@ if $install; then
 	mount --mkdir "${DISKP}1" /mnt/boot
 	
 	# section:base-installation
-	#basestrap /mnt base base-devel linux linux-firmware runit elogind-runit connman connman-runit grub cryptsetup lvm2 lvm2-runit zsh dash
-	basestrap /mnt base base-devel linux linux-firmware openrc elogind-openrc connman connman-openrc grub cryptsetup lvm2 lvm2-openrc zsh dash
+	#basestrap /mnt base base-devel linux linux-firmware runit elogind-runit networkmanager networkmanager-runit grub cryptsetup lvm2 lvm2-runit zsh dash
+	basestrap /mnt base base-devel linux linux-firmware openrc elogind-openrc networkmanager networkmanager-openrc grub cryptsetup lvm2 lvm2-openrc zsh dash
 	fstabgen -U /mnt >>/mnt/etc/fstab
 
 	# section:bootstrap
@@ -230,8 +230,8 @@ elif $bootstrap; then
 	127.0.0.1	localhost
 	::1		localhost
 	127.0.0.1	$HOSTNAME.localdomain $HOSTNAME" >>/etc/hosts
-	#ln -s /etc/runit/sv/connmand /etc/runit/runsvdir/default
-	rc-update add connmand
+	#ln -s /etc/runit/sv/NetworkManager /etc/runit/runsvdir/default
+	rc-update add NetworkManager
 
 	# section:base-system-shell
 	unlink /bin/sh
@@ -325,12 +325,13 @@ Include = /etc/pacman.d/mirrorlist-arch" >>/etc/pacman.conf
 		sxiv mpv xwallpaper xclip scrot \
 		zsh-syntax-highlighting \
 		man-db tree entr \
-		htop connman-gtk \
+		htop \
 		acpi \
 		pulseaudio pavucontrol pamixer \
 		vim \
 		openssh rsync \
-		lua python shellcheck cmake \
+		pass \
+		go lua python shellcheck cmake \
 		zathura zathura-pdf-mupdf \
 		unzip \
 		firefox \
