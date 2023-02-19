@@ -198,7 +198,8 @@ if $install; then
 	mount --mkdir "${DISKP}1" /mnt/boot
 	
 	# section:base-installation
-	basestrap /mnt base base-devel linux linux-firmware runit elogind-runit connman connman-runit grub cryptsetup lvm2 lvm2-runit zsh dash
+	#basestrap /mnt base base-devel linux linux-firmware runit elogind-runit connman connman-runit grub cryptsetup lvm2 lvm2-runit zsh dash
+	basestrap /mnt base base-devel linux linux-firmware openrc elogind-openrc connman connman-openrc grub cryptsetup lvm2 lvm2-openrc zsh dash
 	fstabgen -U /mnt >>/mnt/etc/fstab
 
 	# section:bootstrap
@@ -229,7 +230,8 @@ elif $bootstrap; then
 	127.0.0.1	localhost
 	::1		localhost
 	127.0.0.1	$HOSTNAME.localdomain $HOSTNAME" >>/etc/hosts
-	ln -s /etc/runit/sv/connmand /etc/runit/runsvdir/default
+	#ln -s /etc/runit/sv/connmand /etc/runit/runsvdir/default
+	rc-update add connmand
 
 	# section:base-system-shell
 	unlink /bin/sh
